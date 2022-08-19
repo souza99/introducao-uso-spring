@@ -23,7 +23,6 @@ public class EstadoService {
     public Estado salvar(Estado estado) {
         estado.setDataCadastro(new Date());
         Estado novoEstado = estadoRepository.saveAndFlush(estado);
-        System.out.println(novoEstado);
         return novoEstado;
     }
 
