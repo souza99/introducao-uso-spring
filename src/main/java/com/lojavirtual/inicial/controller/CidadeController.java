@@ -1,9 +1,6 @@
 package com.lojavirtual.inicial.controller;
 
-import com.lojavirtual.inicial.entity.Estado;
-import com.lojavirtual.inicial.service.EstadoService;
-
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,36 +12,37 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import com.lojavirtual.inicial.entity.Cidade;
+import com.lojavirtual.inicial.service.CidadeService;
 
-import javax.websocket.server.PathParam;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @RestController
-@RequestMapping("api/estado/")
-public class EstadoController {
+@RequestMapping("api/cidade/")
+public class CidadeController {
 
     @Autowired
-    private EstadoService estadoService;
+    private CidadeService cidadeService;
 
     @GetMapping("/")
-    public List<Estado> buscarTodos() {
-        return estadoService.buscarTodos();
+    public List<Cidade> buscarTodos() {
+        return cidadeService.buscarTodos();
     }
 
     @PostMapping("/")
-    public Estado salvar(@RequestBody Estado estado) {
-        return estadoService.salvar(estado);
+    public Cidade salvar(@RequestBody Cidade object) {
+        return cidadeService.salvar(object);
     }
 
     @PutMapping("/")
-    public Estado editar(@RequestBody Estado estado) {
-        return estadoService.editar(estado);
+    public Cidade editar(@RequestBody Cidade object) {
+        return cidadeService.editar(object);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluir(@PathVariable("id") Long id) {
-        estadoService.deletar(id);
+        cidadeService.deletar(id);
         return ResponseEntity.ok().build();
     }
-
+    
 }
