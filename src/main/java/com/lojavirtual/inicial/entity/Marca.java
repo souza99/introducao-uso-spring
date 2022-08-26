@@ -1,25 +1,29 @@
 package com.lojavirtual.inicial.entity;
 
-import lombok.Data;
-
-import javax.persistence.*;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import lombok.Data;
+
 @Entity
-@Table(name = "cidade")
+@Table(name = "marca")
 @Data
-public class Cidade {
-    
+public class Marca {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "nome")
     private String nome;
-
-    @ManyToOne
-    @JoinColumn(name = "idEstado")
-    private Estado estado;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataCadastro;
