@@ -1,49 +1,48 @@
 package com.lojavirtual.inicial.controller;
 
-import com.lojavirtual.inicial.entity.Estado;
-import com.lojavirtual.inicial.service.EstadoService;
-
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import com.lojavirtual.inicial.entity.Categoria;
+import com.lojavirtual.inicial.service.CategoriaService;
 
-import javax.websocket.server.PathParam;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @RestController
-@RequestMapping("api/estado")
-public class EstadoController {
+@RequestMapping("api/categoria")
+public class CategoriaController {
 
     @Autowired
-    private EstadoService estadoService;
+    private CategoriaService categoriaService;
 
     @GetMapping("/")
-    public List<Estado> buscarTodos() {
-        return estadoService.buscarTodos();
+    public List<Categoria> buscarTodas() {
+        return categoriaService.buscarTodas();
     }
 
     @PostMapping("/")
-    public Estado salvar(@RequestBody Estado estado) {
-        return estadoService.salvar(estado);
+    public Categoria salvar(@RequestBody Categoria object) {
+        return categoriaService.salvar(object);
     }
 
     @PutMapping("/")
-    public Estado editar(@RequestBody Estado estado) {
-        return estadoService.editar(estado);
+    public Categoria editar(@RequestBody Categoria object) {
+        return categoriaService.editar(object);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluir(@PathVariable("id") Long id) {
-        estadoService.deletar(id);
+        categoriaService.deletar(id);
         return ResponseEntity.ok().build();
     }
 

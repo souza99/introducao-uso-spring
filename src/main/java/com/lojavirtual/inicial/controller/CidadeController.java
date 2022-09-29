@@ -18,7 +18,7 @@ import com.lojavirtual.inicial.service.CidadeService;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @RestController
-@RequestMapping("api/cidade/")
+@RequestMapping("api/cidade")
 public class CidadeController {
 
     @Autowired
