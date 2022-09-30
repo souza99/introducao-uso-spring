@@ -30,4 +30,9 @@ public class MarcaService {
         Marca returnObject = marcaRepository.saveAndFlush(object);
         return returnObject;
     }
+
+    public void deletar(Long id) {
+        Marca object = marcaRepository.findById(id).get();
+        marcaRepository.delete(object);
+    }
 }
