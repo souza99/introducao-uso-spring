@@ -13,7 +13,7 @@ import com.lojavirtual.inicial.repository.MarcaRepository;
 public class MarcaService {
     
     @Autowired
-    MarcaRepository marcaRepository;
+    private MarcaRepository marcaRepository;
 
     public List<Marca> buscarTodos() {
         return marcaRepository.findAll();
