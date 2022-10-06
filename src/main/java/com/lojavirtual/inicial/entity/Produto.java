@@ -1,14 +1,17 @@
 package com.lojavirtual.inicial.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import lombok.Data;
 
@@ -37,5 +40,15 @@ public class Produto {
     @ManyToOne
     @JoinColumn(name = "idMarca")
     private Marca marca;
+
+    @ManyToOne
+    @JoinColumn(name = "idCategoria")
+    private Categoria categoria;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dataCadastro;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dataAtualizacao;
 
 }
