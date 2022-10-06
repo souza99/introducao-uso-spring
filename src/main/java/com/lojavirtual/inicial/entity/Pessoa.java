@@ -47,7 +47,7 @@ public class Pessoa {
     private Cidade cidade;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Date dataCadastro;
+    private Date dataCriacao;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataAtualizacao;
