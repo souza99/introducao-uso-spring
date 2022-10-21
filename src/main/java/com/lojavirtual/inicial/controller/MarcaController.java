@@ -40,7 +40,7 @@ public class MarcaController {
         return marcaService.editar(object);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluir(@PathVariable("id") Long id) {
         marcaService.deletar(id);
         return ResponseEntity.ok().build();

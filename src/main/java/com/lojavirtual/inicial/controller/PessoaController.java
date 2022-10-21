@@ -39,7 +39,7 @@ public class PessoaController {
         return pessoaService.editar(object);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluir(@PathVariable("id") Long id) {
         pessoaService.deletar(id);
         return ResponseEntity.ok().build();

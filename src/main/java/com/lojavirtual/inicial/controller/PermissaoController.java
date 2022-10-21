@@ -39,7 +39,7 @@ public class PermissaoController {
         return permissaoService.editar(object);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluir(@PathVariable("id") Long id) {
         permissaoService.deletar(id);
         return ResponseEntity.ok().build();
