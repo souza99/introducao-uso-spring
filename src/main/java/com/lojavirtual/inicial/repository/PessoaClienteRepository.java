@@ -1,13 +1,13 @@
 package com.lojavirtual.inicial.repository;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.lojavirtual.inicial.entity.Permissao;
+import com.lojavirtual.inicial.entity.Pessoa;
 
-public interface PermissaoRepository extends JpaRepository<Permissao, Long> {
+import java.util.List;
+
+public interface PessoaClienteRepository extends JpaRepository<Pessoa, Long> {
 
     List<Permissao> findByNome(String nome);
-    
 }

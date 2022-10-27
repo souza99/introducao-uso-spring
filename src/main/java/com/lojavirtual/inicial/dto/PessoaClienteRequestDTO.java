@@ -21,7 +21,7 @@ public class PessoaClienteRequestDTO {
 
     private String cidade;
 
-    public Pessoa converte(PessoaClienteRequestDTO pessoaClienteRequestDTO) {
+    public Pessoa converter(PessoaClienteRequestDTO pessoaClienteRequestDTO) {
         Pessoa pessoa = new Pessoa();
         BeanUtils.copyProperties(pessoaClienteRequestDTO, pessoa);
         return pessoa;

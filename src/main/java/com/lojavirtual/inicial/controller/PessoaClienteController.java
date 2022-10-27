@@ -13,10 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lojavirtual.inicial.dto.PessoaClienteRequestDTO;
-import com.lojavirtual.inicial.entity.Permissao;
 import com.lojavirtual.inicial.entity.Pessoa;
-import com.lojavirtual.inicial.service.PermissaoService;
-import com.lojavirtual.inicial.service.PessoaService;
+import com.lojavirtual.inicial.service.PessoaClienteService;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
@@ -25,12 +23,11 @@ import io.swagger.v3.oas.annotations.parameters.RequestBody;
 public class PessoaClienteController {
 
     @Autowired
-    private PessoaService pessoaService;
+    private PessoaClienteService pessoaClienteService;
 
     @PostMapping("/")
-    public Pessoa salvar(@RequestBody PessoaClienteRequestDTO object) {
-        Pessoa pessoa = new PessoaClienteRequestDTO().converte(object);
-        return pessoaService.salvar(pessoa);
+    public Pessoa salvar(@RequestBody PessoaClienteRequestDTO pessoaDto) {
+        return pessoaClienteService.salvar(pessoaDto);
     }
 
 }
