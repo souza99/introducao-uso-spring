@@ -2,7 +2,6 @@ package com.lojavirtual.inicial.service;
 
 import com.lojavirtual.inicial.entity.Estado;
 import com.lojavirtual.inicial.repository.EstadoRepository;
-import org.jboss.jandex.Index;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
