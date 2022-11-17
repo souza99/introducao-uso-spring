@@ -1,0 +1,8 @@
+<html>
+<head></head>
+<body>
+    <h3>Eai ${nome}, passando para avisar!</h3>
+    <br/>
+    <p>${mensagem}</p>
+</body>
+</html>
