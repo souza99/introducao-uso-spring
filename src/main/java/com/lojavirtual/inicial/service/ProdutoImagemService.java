@@ -13,26 +13,26 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.lojavirtual.inicial.entity.Produto;
-import com.lojavirtual.inicial.entity.ProdutoImagem;
-import com.lojavirtual.inicial.repository.ProdutoImagemRepository;
+import com.lojavirtual.inicial.entity.ProdutoImagens;
+import com.lojavirtual.inicial.repository.ProdutoImagensRepository;
 import com.lojavirtual.inicial.repository.ProdutoRepository;
 
 @Service
 public class ProdutoImagemService {
 
     @Autowired
-    private ProdutoImagemRepository produtoImagemRepository;
+    private ProdutoImagensRepository produtoImagemRepository;
 
     @Autowired
     private ProdutoRepository produtoRepository;
 
-    public List<ProdutoImagem> buscarTodos() {
+    public List<ProdutoImagens> buscarTodos() {
         return produtoImagemRepository.findAll();
     }
 
-    public ProdutoImagem salvar(Long idProduto, MultipartFile file) {
+    public ProdutoImagens salvar(Long idProduto, MultipartFile file) {
         Produto produto = produtoRepository.findById(idProduto).get();
-        ProdutoImagem object = new ProdutoImagem();
+        ProdutoImagens object = new ProdutoImagens();
 
         try {
 
@@ -55,13 +55,13 @@ public class ProdutoImagemService {
     }
 
 
-    public ProdutoImagem editar(ProdutoImagem object) {
+    public ProdutoImagens editar(ProdutoImagens object) {
         object.setDataAtualizacao(new Date());
         return produtoImagemRepository.saveAndFlush(object);
     }
 
     public void deletar(Long id) {
-        ProdutoImagem object = produtoImagemRepository.findById(id).get();
+        ProdutoImagens object = produtoImagemRepository.findById(id).get();
         produtoImagemRepository.delete(object);
     }
 

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.lojavirtual.inicial.entity.ProdutoImagem;
+import com.lojavirtual.inicial.entity.ProdutoImagens;
 import com.lojavirtual.inicial.service.ProdutoImagemService;
 
 @RestController
@@ -26,17 +26,17 @@ public class ProdutoImagemControlle {
     private ProdutoImagemService produtoImagemService;
 
     @GetMapping("/")
-    public List<ProdutoImagem> buscarTodos() {
+    public List<ProdutoImagens> buscarTodos() {
         return produtoImagemService.buscarTodos();
     }
 
     @PostMapping("/")
-    public ProdutoImagem salvar(@RequestParam("idProduto") Long idProduto, @RequestParam("file") MultipartFile file) {
+    public ProdutoImagens salvar(@RequestParam("idProduto") Long idProduto, @RequestParam("file") MultipartFile file) {
         return produtoImagemService.salvar(idProduto, file);
     }
 
     @PutMapping("/")
-    public ProdutoImagem editar(@RequestBody ProdutoImagem object) {
+    public ProdutoImagens editar(@RequestBody ProdutoImagens object) {
         return produtoImagemService.editar(object);
     }
 

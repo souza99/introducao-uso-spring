@@ -18,7 +18,7 @@ import lombok.Data;
 @Entity
 @Table(name = "produtoImagem")
 @Data
-public class ProdutoImagem {
+public class ProdutoImagens {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
