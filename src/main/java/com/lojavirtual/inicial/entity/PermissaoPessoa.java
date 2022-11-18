@@ -12,6 +12,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.security.core.GrantedAuthority;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
@@ -19,7 +21,7 @@ import lombok.Data;
 @Entity
 @Table(name = "permissao_perssoa")
 @Data
-public class PermissaoPessoa {
+public class PermissaoPessoa implements GrantedAuthority {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -40,5 +42,8 @@ public class PermissaoPessoa {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataAtualizacao;
 
-
+    @Override
+    public String getAuthority() {
+        return permissao.getNome();
+    }
 }
