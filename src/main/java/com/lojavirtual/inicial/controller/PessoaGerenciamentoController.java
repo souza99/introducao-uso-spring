@@ -14,10 +14,13 @@ import com.lojavirtual.inicial.security.JwtUtil;
 import com.lojavirtual.inicial.service.PessoaGerenciamentoService;
 import org.springframework.security.core.Authentication;
 
+import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+
 @RestController
 @RequestMapping("/api/pessoa-gerenciamento")
 public class PessoaGerenciamentoController {
-
     @Autowired
     private PessoaGerenciamentoService pessoaGerenciamentoService;
 
@@ -28,22 +31,29 @@ public class PessoaGerenciamentoController {
     AuthenticationManager authenticationManager;
 
     @PostMapping("/senha-codigo")
+    @CrossOrigin("http://localhost:3000")
     public String recuperarCodigo(@RequestBody Pessoa pessoa) {
         return pessoaGerenciamentoService.solicitarCodigo(pessoa.getEmail());
     }
 
     @PostMapping("/senha-alterar")
+    @CrossOrigin("http://localhost:3000")
     public String alterarSenha(@RequestBody Pessoa pessoa) {
         return pessoaGerenciamentoService.alterarSenha(pessoa);
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody Pessoa pessoa){
-      Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(pessoa.getEmail(), pessoa.getSenha()));
-      SecurityContextHolder.getContext().setAuthentication(authentication);
-      Pessoa autenticado = (Pessoa) authentication.getPrincipal();
-      String token = jwtUtil.gerarTokenUsername(autenticado);
-      return ResponseEntity.ok(token);
+    @CrossOrigin("http://localhost:3000")
+    public ResponseEntity<?> login(@RequestBody Pessoa pessoa) {
+        Authentication authentication = authenticationManager
+                .authenticate(new UsernamePasswordAuthenticationToken(pessoa.getEmail(), pessoa.getSenha()));
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        Pessoa autenticado = (Pessoa) authentication.getPrincipal();
 
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("token", jwtUtil.gerarTokenUsername(autenticado));
+        map.put("permissoes", autenticado.getAuthorities());
+
+        return ResponseEntity.ok(map);
     }
 }
