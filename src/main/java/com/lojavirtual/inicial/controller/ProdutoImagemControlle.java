@@ -41,7 +41,7 @@ public class ProdutoImagemControlle {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> excluir(@PathVariable("id") Long id) {
+    public ResponseEntity<Void> deletar(@PathVariable("id") Long id) {
         produtoImagemService.deletar(id);
         return ResponseEntity.ok().build();
     }

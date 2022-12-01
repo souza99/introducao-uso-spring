@@ -36,7 +36,7 @@ public class PessoaGerenciamentoController {
         return pessoaGerenciamentoService.solicitarCodigo(pessoa.getEmail());
     }
 
-    @PostMapping("/senha-alterar")
+    @PostMapping("/senha-editar")
     @CrossOrigin("http://localhost:3000")
     public String alterarSenha(@RequestBody Pessoa pessoa) {
         return pessoaGerenciamentoService.alterarSenha(pessoa);

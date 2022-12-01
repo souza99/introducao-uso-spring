@@ -39,7 +39,7 @@ public class CidadeController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> excluir(@PathVariable("id") Long id) {
+    public ResponseEntity<Void> deletar(@PathVariable("id") Long id) {
         cidadeService.deletar(id);
         return ResponseEntity.ok().build();
     }
