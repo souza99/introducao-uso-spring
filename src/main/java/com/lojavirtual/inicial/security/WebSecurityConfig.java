@@ -41,13 +41,12 @@ public class WebSecurityConfig {
         http.cors().and().csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and().authorizeRequests().antMatchers("/api/pessoa-gerenciamento/**").permitAll()
-                .antMatchers("/api/pessoa/**").hasAnyAuthority("gerente")
+                .and().authorizeRequests().antMatchers("/api/gerenciamento-usuario/**").permitAll()
+                .antMatchers("/api/pessoa/**").hasAnyAuthority("ADMINISTRADOR")
                 .anyRequest().authenticated();
 
         http.addFilterBefore(authFilterToken(), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
-
 }

@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 
 @RestController
-@RequestMapping("/api/pessoa-gerenciamento")
+@RequestMapping("/api/gerenciamento-usuario")
 public class PessoaGerenciamentoController {
     @Autowired
     private PessoaGerenciamentoService pessoaGerenciamentoService;
